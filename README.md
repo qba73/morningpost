@@ -1,6 +1,6 @@
 # The Morning Post
 
-`morningpost` is a Go program that curates a little “morning newspaper” for you, by scraping news websites and selecting stories.
+`morningpost` is a cli tool that curates a little “morning newspaper” for you, by scraping news websites and selecting stories.
 
 ## Description
 

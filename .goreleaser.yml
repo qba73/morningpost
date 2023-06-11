@@ -1,0 +1,34 @@
+builds:
+  - binary: morningpost
+    goos:
+      - darwin
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    main: ./cmd/morningpost
+    env:
+      - CGO_ENABLED=0
+
+release:
+  prerelease: auto
+
+universal_binaries:
+  - replace: true
+
+brews:
+  - name: morningpost
+    homepage: "https://github.com/qba73/morningpost"
+    tap:
+      owner: qba73
+      name: homebrew-tap
+    commit_author:
+      name: qba73
+      email: info@jarosz.dev
+    description: "A cli utility for generating a morning newspaper."
+    install: |
+      bin.install "morningpost"
+
+checksum:
+  name_template: "checksums.txt"
