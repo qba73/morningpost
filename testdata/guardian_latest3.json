@@ -1,0 +1,53 @@
+{
+    "response": {
+        "status": "ok",
+        "userTier": "developer",
+        "total": 2430672,
+        "startIndex": 1,
+        "pageSize": 10,
+        "currentPage": 1,
+        "pages": 243068,
+        "orderBy": "newest",
+        "results": [
+            {
+                "id": "politics/2023/jun/11/senior-tories-tell-boris-johnson-and-allies-to-shut-up-and-go-away",
+                "type": "article",
+                "sectionId": "politics",
+                "sectionName": "Politics",
+                "webPublicationDate": "2023-06-11T19:07:10Z",
+                "webTitle": "Senior Tories tell Boris Johnson and allies to ‘shut up and go away’",
+                "webUrl": "https://www.theguardian.com/politics/2023/jun/11/senior-tories-tell-boris-johnson-and-allies-to-shut-up-and-go-away",
+                "apiUrl": "https://content.guardianapis.com/politics/2023/jun/11/senior-tories-tell-boris-johnson-and-allies-to-shut-up-and-go-away",
+                "isHosted": false,
+                "pillarId": "pillar/news",
+                "pillarName": "News"
+            },
+            {
+                "id": "environment/2023/jun/11/yorkshire-water-bosss-decision-to-forgo-bonus-labelled-hollow-by-union",
+                "type": "article",
+                "sectionId": "environment",
+                "sectionName": "Environment",
+                "webPublicationDate": "2023-06-11T19:00:00Z",
+                "webTitle": "Yorkshire Water boss’s decision to forgo bonus labelled ‘hollow’ by union",
+                "webUrl": "https://www.theguardian.com/environment/2023/jun/11/yorkshire-water-bosss-decision-to-forgo-bonus-labelled-hollow-by-union",
+                "apiUrl": "https://content.guardianapis.com/environment/2023/jun/11/yorkshire-water-bosss-decision-to-forgo-bonus-labelled-hollow-by-union",
+                "isHosted": false,
+                "pillarId": "pillar/news",
+                "pillarName": "News"
+            },
+            {
+                "id": "world/2023/jun/11/ukraine-claims-to-have-liberated-two-frontline-villages-in-donetsk",
+                "type": "article",
+                "sectionId": "world",
+                "sectionName": "World news",
+                "webPublicationDate": "2023-06-11T17:56:28Z",
+                "webTitle": "Ukraine claims to have liberated three frontline villages in Donetsk",
+                "webUrl": "https://www.theguardian.com/world/2023/jun/11/ukraine-claims-to-have-liberated-two-frontline-villages-in-donetsk",
+                "apiUrl": "https://content.guardianapis.com/world/2023/jun/11/ukraine-claims-to-have-liberated-two-frontline-villages-in-donetsk",
+                "isHosted": false,
+                "pillarId": "pillar/news",
+                "pillarName": "News"
+            }
+        ]
+    }
+}
