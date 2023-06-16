@@ -28,6 +28,15 @@
 
 ## Installation
 
+### Using `brew` package manager
+
+```bash
+brew tap qba73/tap
+brew install morningpost
+```
+
+### From source
+
 - Clone the repo.
 - Build the `morningpost` binary.
 
