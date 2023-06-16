@@ -1,8 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"os"
+
+	"github.com/qba73/morningpost"
+)
 
 func main() {
-	// Placeholder for a CLI entry point
-	fmt.Println("generating morning newspaper...")
+	os.Exit(morningpost.Main())
 }

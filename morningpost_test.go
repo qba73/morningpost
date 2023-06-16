@@ -7,32 +7,9 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
+	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/qba73/morningpost"
 )
-
-func TestGetNews(t *testing.T) {
-	t.Parallel()
-
-	ts := newTestServerWithPathValidator(
-		res_guardian,
-		"/search?sectionId=news&format=json&showFields=headline,short-url",
-		t,
-	)
-	client := newClient(ts.URL, t)
-
-	_, err := client.GetNews()
-	if err != nil {
-		t.Fatal(err)
-	}
-
-}
-
-func newClient(baseURL string, t *testing.T) *morningpost.Client {
-	t.Helper()
-	c := morningpost.NewClient()
-	c.BaseURL = baseURL
-	return c
-}
 
 func newTestServerWithPathValidator(respBody string, wantURL string, t *testing.T) *httptest.Server {
 	t.Helper()
@@ -50,6 +27,8 @@ func newTestServerWithPathValidator(respBody string, wantURL string, t *testing.
 
 // verifyURL verifies if URLs are equal.
 func verifyURL(wantURL, gotURL string, t *testing.T) {
+	t.Helper()
+
 	wantU, err := url.Parse(wantURL)
 	if err != nil {
 		t.Fatalf("error parsing URL %q, %v", wantURL, err)
@@ -74,6 +53,47 @@ func verifyURL(wantURL, gotURL string, t *testing.T) {
 
 	if !cmp.Equal(wantQuery, gotQuery) {
 		t.Fatalf("query params do not match, \n%s", cmp.Diff(wantQuery, gotQuery))
+	}
+}
+
+func TestGetNews_(t *testing.T) {
+	t.Parallel()
+
+	ts := newTestServerWithPathValidator(
+		res_guardian,
+		"/search?sectionId=news&format=json&showFields=headline,short-url",
+		t,
+	)
+	defer ts.Close()
+
+	client := morningpost.NewClient("test-api-key")
+	client.BaseURL = ts.URL
+
+	got, err := client.GetNews()
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	want := []morningpost.News{
+		{
+			Title: "Senior Tories tell Boris Johnson and allies to ‘shut up and go away’",
+			Link:  "https://www.theguardian.com/politics/2023/jun/11/senior-tories-tell-boris-johnson-and-allies-to-shut-up-and-go-away",
+			Date:  "2023-06-11T19:07:10Z",
+		},
+		{
+			Title: "Yorkshire Water boss’s decision to forgo bonus labelled ‘hollow’ by union",
+			Link:  "https://www.theguardian.com/environment/2023/jun/11/yorkshire-water-bosss-decision-to-forgo-bonus-labelled-hollow-by-union",
+			Date:  "2023-06-11T19:00:00Z",
+		},
+		{
+			Title: "Ukraine claims to have liberated three frontline villages in Donetsk",
+			Link:  "https://www.theguardian.com/world/2023/jun/11/ukraine-claims-to-have-liberated-two-frontline-villages-in-donetsk",
+			Date:  "2023-06-11T17:56:28Z",
+		},
+	}
+
+	if !cmp.Equal(want, got, cmpopts.SortSlices(func(i, j morningpost.News) bool { return i.Title < j.Title })) {
+		t.Error(cmp.Diff(want, got))
 	}
 }
 
